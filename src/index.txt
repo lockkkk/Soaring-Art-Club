@@ -1,0 +1,14 @@
+const express = require('express');
+const debug = require('debug')('mywebsite:app');
+const app = express();
+
+// this is comment
+// this is another comment
+
+app.get('/', function(req, res) {
+    res.send('<html><body><h1>hello world!</h1><hr/><p>from lockkkkkkkk </p></body></html>')
+    debug('get request %o', req)
+});
+app.listen(3000, () => {
+    console.log('start server')
+});

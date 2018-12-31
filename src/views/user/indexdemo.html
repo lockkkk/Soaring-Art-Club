@@ -1,0 +1,15 @@
+<html>
+    <head>
+        <title>this is users</title>
+    </head>
+    <body>
+        <div>
+            {{#users}}
+            <p>id: {{user_id}}, 用户名： {{username}}, 昵称： {{nickname}}</p> <a href="/user/{{id}}">Link</a>
+            {{/users}}
+            {{#errormsg}}
+            <p>{{errormsg}}</p>
+            {{/errormsg}}
+        </div>
+    </body>
+</html>

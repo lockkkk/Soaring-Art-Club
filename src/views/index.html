@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>User Index</title>
+    <script src="https://cdn.bootcss.com/vue/2.5.9/vue.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1>Index of users</h1>
+    <div id="app">
+        <div v-for="user in users">
+            <p>{{user.id}}: {{user.nickname}}</p>
+            <p>{{user.email}}</p>
+            <br/>
+        </div>
+    </div>
+</body>
+<script>
+    $(document).ready(function () {
+        new Vue({
+        el: "#app",
+        data: {
+            users: []
+        },
+        mounted: function () {
+            console.log("vue ready");
+            let that = this
+            $.ajax({
+                url: "/users",
+                dataType: "json",
+                method: "GET",
+                success: function(data) {
+                    that.users = data
+                },
+                error: function (e) {
+                    console.log(e)
+                }
+            })
+        }
+    })
+
+    })
+
+</script>
+</html>

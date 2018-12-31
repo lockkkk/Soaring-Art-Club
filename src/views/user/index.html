@@ -1,0 +1,15 @@
+<html>
+    <head>
+        <title>this is users</title>
+    </head>
+    <body>
+        <div>
+            {{#users}}
+            <p>user id {{id}}, name {{name}}, motto {{motto}}</p> <a href="/user/{{id}}">Link</a>
+            {{/users}}
+            {{#errormsg}}
+            <p>{{errormsg}}</p>
+            {{/errormsg}}
+        </div>
+    </body>
+</html>

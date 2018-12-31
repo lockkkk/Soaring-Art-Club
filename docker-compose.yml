@@ -1,0 +1,33 @@
+version: '3'
+services:
+  web_static:
+    build: .
+    volumes:
+      - "./static_src:/usr/src/app:rw"
+    working_dir: /usr/src/app
+    ports:
+      - 8080:8080
+    command: npm run dev
+  web:
+    build: .
+    volumes:
+      - "./src:/usr/src/app"
+    working_dir: /usr/src/app
+    ports:
+      - 3000:3000
+      - 3001:3001
+    command: npm start
+  
+  db:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: acat2333
+
+  admin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - 8000:80
+  redis:
+    image: redis
+
